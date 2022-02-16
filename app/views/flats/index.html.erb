@@ -1,0 +1,19 @@
+<h1>All our Flats</h1>
+<%= link_to 'New Flat', new_flat_path, class: "btn btn-primary" %>
+<h3>All <%= @flats.count %> flats</h3>
+<% @flats.each do |flat| %>
+  <div>
+    <img src="https://exp.cdn-hotels.com/hotels/20000000/19520000/19511000/19510921/9d312937_z.jpg?impolicy=fcrop&w=500&h=333&q=medium" alt="A picture of a flat">
+    <p><%= flat.name %></p>
+    <p><%= flat.address %></p>
+    <p><%= flat.description %></p>
+    <p>£<%= flat.price_per_night %></p>
+    <p>Guests: <%= flat.number_of_guests %></p>
+    <%= link_to 'More info', flat_path(flat), class: "btn btn-primary"%>
+    <%= link_to 'Edit', edit_flat_path(flat), class: "btn btn-success"%>
+    <%= link_to flat_path(flat), method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+            <div class="btn btn-danger">Delete Flat</div>
+          <% end %>
+  </div>
+<% end %>
